@@ -5,6 +5,8 @@ class Robot
 {
 public:
 
+    Robot();
+
     void begin();
 
     void update();
