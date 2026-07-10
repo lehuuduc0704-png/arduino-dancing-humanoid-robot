@@ -1,5 +1,10 @@
 #include "Robot.h"
 
+Robot::Robot()
+{
+
+}
+
 void Robot::begin()
 {
 
