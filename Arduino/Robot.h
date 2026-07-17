@@ -34,8 +34,12 @@ private:
     // Private Functions
     //====================================================
 
+    unsigned long lastSoundTime;
+
     void initDevices();
 
+    bool soundDetected();
+    
 public:
 
     //====================================================
