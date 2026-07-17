@@ -106,7 +106,13 @@ public:
     void dance1();
     void dance2();
     void dance3();
-
+    void dance4();
+    void dance5();
+    void dance6();
+    void dance7();
+    void dance8();
+    void dance9();
+    void dance10();
     void randomDance();
 };
 
