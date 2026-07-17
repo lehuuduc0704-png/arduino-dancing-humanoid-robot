@@ -41,9 +41,9 @@ public:
 
     void startup();
 
-    void idle();
-
     void greeting();
+
+    void idle();
 
     void dance1();
 
@@ -52,6 +52,16 @@ public:
     void dance3();
 
     void randomDance();
+
+    void openWings();
+
+    void closeWings();
+
+    void raiseArms();
+
+    void lowerArms();
+
+    void centerAll();
 private:
     ServoController head;
     ServoController leftArm;
