@@ -11,6 +11,8 @@ Robot robot;
 
 void setup()
 {
+    randomSeed(analogRead(A0));
+
     robot.begin();
 }
 
