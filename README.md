@@ -1,12 +1,7 @@
 # 🤖 Dancing Robot Arduino
 
-<p align="center">
-  <img src="docs/robot.jpg" width="450">
-</p>
-
-<p align="center">
-An Arduino Uno based dancing robot with 5 servos, sound detection and Object-Oriented Programming.
-</p>
+A dancing robot built with **Arduino Uno R3** using Object-Oriented Programming (OOP) in C++.  
+The robot reacts to sound and performs random dance animations using five servo motors.
 
 ---
 
