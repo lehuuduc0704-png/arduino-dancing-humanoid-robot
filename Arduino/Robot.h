@@ -21,7 +21,7 @@ private:
     ServoController leftWing;
     ServoController rightWing;
 
-    // Danh sách tất cả servo
+    // Danh sách tất cả Servo
     ServoController* servos[5];
 
     //====================================================
@@ -49,7 +49,6 @@ public:
     //====================================================
 
     void begin();
-
     void update();
 
     //====================================================
@@ -59,53 +58,53 @@ public:
     void startup();
 
     //====================================================
-    // Head Motion
+    // Actions
     //====================================================
+
+    //--------------- Head ----------------
 
     void lookLeft();
-
     void lookRight();
-
     void lookCenter();
 
-    //====================================================
-    // Wing Motion
-    //====================================================
+    void nodHead();
+    void shakeHead();
 
-    void openWings();
-
-    void closeWings();
-
-    //====================================================
-    // Arm Motion
-    //====================================================
+    //--------------- Arms ----------------
 
     void raiseArms();
-
     void lowerArms();
 
-    //====================================================
-    // Robot Motion
-    //====================================================
+    void waveLeftHand();
+    void waveRightHand();
+    void waveBothHands();
 
+    //--------------- Wings ----------------
+
+    void openWings();
+    void closeWings();
+
+    void flapWings();
+
+    //--------------- Full Body ----------------
+
+    void readyPose();
+    void celebrate();
     void centerAll();
 
     //====================================================
-    // Behaviors
+    // Behavior
     //====================================================
 
-    void greeting();
-
     void idle();
+    void greeting();
 
     //====================================================
     // Dance
     //====================================================
 
     void dance1();
-
     void dance2();
-
     void dance3();
 
     void randomDance();
