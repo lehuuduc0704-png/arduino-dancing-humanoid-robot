@@ -1,5 +1,9 @@
 #include "Robot.h"
 
+//====================================================
+// Constructor
+//====================================================
+
 Robot::Robot()
 
     : head(
@@ -31,16 +35,27 @@ Robot::Robot()
         RIGHT_WING_OPEN,
         RIGHT_WING_CLOSE,
         RIGHT_WING_CENTER)
-
 {
-
     servos[0] = &head;
     servos[1] = &leftArm;
     servos[2] = &rightArm;
     servos[3] = &leftWing;
     servos[4] = &rightWing;
-
 }
+
+//====================================================
+// Initialization
+//====================================================
+
+void Robot::initDevices()
+{
+    pinMode(CHEST_LED_PIN, OUTPUT);
+    pinMode(BUZZER_PIN, OUTPUT);
+    pinMode(SOUND_PIN, INPUT);
+
+    digitalWrite(CHEST_LED_PIN, LOW);
+}
+
 void Robot::begin()
 {
     for (int i = 0; i < 5; i++)
@@ -48,45 +63,112 @@ void Robot::begin()
         servos[i]->begin();
     }
 
-    pinMode(CHEST_LED_PIN, OUTPUT);
-
-    pinMode(BUZZER_PIN, OUTPUT);
-
-    pinMode(SOUND_PIN, INPUT);
+    initDevices();
 
     startup();
 }
+
+//====================================================
+// Startup
+//====================================================
+
 void Robot::startup()
 {
     digitalWrite(CHEST_LED_PIN, HIGH);
 
-    tone(BUZZER_PIN, 1000, 150);
-
-    head.center();
-
-    leftArm.center();
-    rightArm.center();
-
-    leftWing.center();
-    rightWing.center();
+    centerAll();
 
     delay(300);
 
+    openWings();
+
+    delay(300);
+
+    closeWings();
+
+    delay(300);
+
+    lookLeft();
+
+    delay(200);
+
+    lookRight();
+
+    delay(200);
+
+    lookCenter();
+
+    delay(300);
+}
+
+//====================================================
+// Head Motion
+//====================================================
+
+void Robot::lookLeft()
+{
+    head.moveSmooth(HEAD_LEFT);
+}
+
+void Robot::lookRight()
+{
+    head.moveSmooth(HEAD_RIGHT);
+}
+
+void Robot::lookCenter()
+{
+    head.center();
+}
+
+//====================================================
+// Wing Motion
+//====================================================
+
+void Robot::openWings()
+{
     leftWing.moveSmooth(LEFT_WING_OPEN);
 
     rightWing.moveSmooth(RIGHT_WING_OPEN);
+}
 
-    delay(300);
-
+void Robot::closeWings()
+{
     leftWing.moveSmooth(LEFT_WING_CLOSE);
 
     rightWing.moveSmooth(RIGHT_WING_CLOSE);
+}
 
-    delay(300);
+//====================================================
+// Arm Motion
+//====================================================
 
-    head.moveSmooth(HEAD_LEFT);
+void Robot::raiseArms()
+{
+    leftArm.moveSmooth(LEFT_ARM_UP);
 
-    head.moveSmooth(HEAD_RIGHT);
+    rightArm.moveSmooth(RIGHT_ARM_UP);
+}
 
+void Robot::lowerArms()
+{
+    leftArm.moveSmooth(LEFT_ARM_DOWN);
+
+    rightArm.moveSmooth(RIGHT_ARM_DOWN);
+}
+
+//====================================================
+// Reset Position
+//====================================================
+
+void Robot::centerAll()
+{
     head.center();
+
+    leftArm.center();
+
+    rightArm.center();
+
+    leftWing.center();
+
+    rightWing.center();
 }
