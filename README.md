@@ -1,61 +1,247 @@
-# 🤖 Arduino Dancing Humanoid Robot
+# 🤖 Dancing Robot Arduino
 
-A DIY humanoid robot built using **Arduino Uno**. The robot reacts to loud sounds and performs multiple dance animations using **5 servo motors**, a **sound sensor**, a **buzzer**, and a **chest LED**.
+<p align="center">
+  <img src="docs/robot.jpg" width="450">
+</p>
 
----
-
-## 📷 Preview
-
-> Demo video and photos will be added soon.
-
----
-
-## ✨ Features
-
-- 🎵 Sound activated dancing
-- 🤖 Head movement
-- 💪 Left & right arm movement
-- 🪽 Left & right wing movement
-- 💡 Chest LED effects
-- 🔊 Active buzzer
-- 🎲 Random dance selection
-- ⚡ Smooth servo movement
+<p align="center">
+An Arduino Uno based dancing robot with 5 servos, sound detection and Object-Oriented Programming.
+</p>
 
 ---
 
-## 🔧 Hardware
+## 📌 Features
+
+- Object-Oriented Programming (OOP)
+- Smooth servo movement
+- Sound activated dancing
+- 10 different dance routines
+- Modular project structure
+- Easy to add new motions
+- Easy to modify servo angles
+- LED chest indicator
+
+---
+
+## 🛠 Hardware
 
 | Component | Quantity |
 |-----------|---------:|
 | Arduino Uno R3 | 1 |
-| SG90 Servo | 5 |
-| KY-038 Sound Sensor | 1 |
-| Active Buzzer | 1 |
-| Red LED | 1 |
+| SG90 Servo Motor | 5 |
+| Sound Sensor (KY-037/KY-038) | 1 |
+| LED | 1 |
 | 220Ω Resistor | 1 |
 | Breadboard | 1 |
 | Jumper Wires | Several |
-| External 5V Power Supply | 1 |
+| External 5V Power Supply (Recommended) | 1 |
 
 ---
 
-## 📌 Pin Mapping
+## 🔌 Pin Configuration
 
 | Device | Pin |
-|---------|-----|
-| Sound Sensor | D2 |
+|---------|----:|
 | Head Servo | D3 |
 | Left Arm Servo | D5 |
 | Right Arm Servo | D6 |
-| Buzzer | D8 |
 | Left Wing Servo | D9 |
 | Right Wing Servo | D10 |
 | Chest LED | D11 |
+| Sound Sensor | D2 |
 
 ---
 
-## 🚧 Project Status
+## 📂 Project Structure
 
-This project is currently under development.
+```
+RobotDance/
+│
+├── RobotDance.ino
+│
+├── Config.h
+│
+├── ServoController.h
+├── ServoController.cpp
+│
+├── Effects.h
+├── Effects.cpp
+│
+├── Robot.h
+├── Robot.cpp
+│
+├── README.md
+│
+└── .gitignore
+```
 
-Version: **v1.0**
+---
+
+## 🧠 Software Architecture
+
+```
+Robot
+│
+├── ServoController
+│      ├── Head
+│      ├── Left Arm
+│      ├── Right Arm
+│      ├── Left Wing
+│      └── Right Wing
+│
+├── Effects
+│      └── LED
+│
+└── Behaviors
+       ├── Startup
+       ├── Greeting
+       ├── Idle
+       └── Dance
+```
+
+---
+
+## 🎮 Robot Actions
+
+### Head
+
+- Look Left
+- Look Right
+- Look Center
+- Nod
+- Shake
+
+### Arms
+
+- Raise Arms
+- Lower Arms
+- Wave Left Hand
+- Wave Right Hand
+- Wave Both Hands
+
+### Wings
+
+- Open Wings
+- Close Wings
+- Flap Wings
+
+### Full Body
+
+- Ready Pose
+- Celebrate
+- Center All
+
+---
+
+## 💃 Dance Library
+
+The robot includes ten dance routines.
+
+- Dance 1
+- Dance 2
+- Dance 3
+- Dance 4
+- Dance 5
+- Dance 6
+- Dance 7
+- Dance 8
+- Dance 9
+- Dance 10
+
+Each dance is composed of reusable robot actions.
+
+---
+
+## 🚀 Getting Started
+
+1. Clone this repository
+
+```
+git clone https://github.com/yourusername/DancingRobot.git
+```
+
+2. Open **RobotDance.ino** using Arduino IDE.
+
+3. Select
+
+```
+Board:
+Arduino Uno
+```
+
+4. Select the correct COM Port.
+
+5. Upload the sketch.
+
+6. Power the robot.
+
+---
+
+## 🎵 How It Works
+
+1. Robot powers on.
+2. Startup animation begins.
+3. Robot waits for sound.
+4. Sound is detected.
+5. A random dance is selected.
+6. Robot returns to idle mode.
+
+---
+
+## ⚙ Configuration
+
+All servo angles and pin definitions can be modified inside:
+
+```
+Config.h
+```
+
+This file contains:
+
+- Pin assignments
+- Servo limits
+- Center positions
+- Motion delay
+- Sound trigger configuration
+
+---
+
+## 📷 Demonstration
+
+Example robot configuration:
+
+- 1 Head Servo
+- 2 Arm Servos
+- 2 Wing Servos
+- 1 Chest LED
+
+---
+
+## 📈 Future Improvements
+
+- Bluetooth control
+- Mobile App
+- OLED display
+- RGB LED effects
+- MP3 music module
+- Ultrasonic obstacle detection
+- Gesture control
+- Voice commands
+
+---
+
+## 👨‍💻 Author
+
+**Lê Hữu Đức**
+
+University of Industry and Trade Ho Chi Minh City
+
+Faculty of Information Technology
+
+---
+
+## 📜 License
+
+This project is released under the MIT License.
+
+Feel free to use, modify, and improve it.
