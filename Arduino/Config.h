@@ -2,71 +2,80 @@
 #define CONFIG_H
 
 //====================================================
-// Pin Configuration
+// Servo Pins
 //====================================================
 
-// Servo Pins
 #define HEAD_PIN            3
+
 #define LEFT_ARM_PIN        5
 #define RIGHT_ARM_PIN       6
+
 #define LEFT_WING_PIN       9
 #define RIGHT_WING_PIN      10
 
+//====================================================
 // Devices
+//====================================================
+
 #define SOUND_PIN           2
-#define BUZZER_PIN          8
 #define CHEST_LED_PIN       11
 
 //====================================================
-// Head Positions
+// Servo Limits
 //====================================================
 
-#define HEAD_LEFT           60
+//--------------- Head ----------------
+
+#define HEAD_LEFT           40
 #define HEAD_CENTER         90
-#define HEAD_RIGHT          120
+#define HEAD_RIGHT          140
 
-//====================================================
-// Left Arm Positions
-//====================================================
+#define HEAD_UP             70
+#define HEAD_DOWN           110
 
-#define LEFT_ARM_UP         30
+//--------------- Left Arm ----------------
+
+#define LEFT_ARM_UP         20
 #define LEFT_ARM_CENTER     90
-#define LEFT_ARM_DOWN       150
+#define LEFT_ARM_DOWN       160
 
-//====================================================
-// Right Arm Positions
-//====================================================
+//--------------- Right Arm ----------------
 
-#define RIGHT_ARM_UP        150
+#define RIGHT_ARM_UP        160
 #define RIGHT_ARM_CENTER    90
-#define RIGHT_ARM_DOWN      30
+#define RIGHT_ARM_DOWN      20
 
-//====================================================
-// Left Wing Positions
-//====================================================
+//--------------- Left Wing ----------------
 
 #define LEFT_WING_CLOSE     20
 #define LEFT_WING_CENTER    55
 #define LEFT_WING_OPEN      90
 
-//====================================================
-// Right Wing Positions
-//====================================================
+//--------------- Right Wing ----------------
 
 #define RIGHT_WING_CLOSE    160
 #define RIGHT_WING_CENTER   125
 #define RIGHT_WING_OPEN     90
 
 //====================================================
-// Sound Sensor
-//====================================================
-
-#define SOUND_THRESHOLD     500
-
-//====================================================
 // Motion
 //====================================================
 
-#define DEFAULT_SPEED       8
+#define SERVO_SPEED         10
+#define SERVO_DELAY         15
+
+#define ACTION_DELAY        200
+
+//====================================================
+// Sound Sensor
+//====================================================
+
+#define SOUND_TRIGGER       HIGH
+
+//====================================================
+// Dance
+//====================================================
+
+#define DANCE_COUNT         10
 
 #endif
