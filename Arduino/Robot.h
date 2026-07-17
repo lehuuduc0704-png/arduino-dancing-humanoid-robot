@@ -3,21 +3,33 @@
 
 #include <Arduino.h>
 
-#include "ServoController.h"
 #include "Config.h"
+#include "ServoController.h"
 #include "Effects.h"
 
 class Robot
 {
 private:
 
+    //========================
+    // Robot Parts
+    //========================
+
     ServoController head;
+
     ServoController leftArm;
+
     ServoController rightArm;
+
     ServoController leftWing;
+
     ServoController rightWing;
 
-    Effects effect;
+    //========================
+    // Devices
+    //========================
+
+    Effects effects;
 
 public:
 
@@ -29,9 +41,9 @@ public:
 
     void startup();
 
-    void greeting();
-
     void idle();
+
+    void greeting();
 
     void dance1();
 
