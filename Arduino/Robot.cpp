@@ -377,26 +377,150 @@ void Robot::dance3()
 
     centerAll();
 }
+void Robot::dance4()
+{
+    effects.ledOn();
+
+    readyPose();
+
+    for(byte i = 0; i < 4; i++)
+    {
+        lookLeft();
+
+        raiseArms();
+
+        lookRight();
+
+        lowerArms();
+
+        openWings();
+
+        closeWings();
+    }
+
+    centerAll();
+}
+void Robot::dance5()
+{
+    effects.ledOn();
+
+    readyPose();
+
+    for(byte i = 0; i < 5; i++)
+    {
+        waveBothHands();
+
+        flapWings();
+
+        shakeHead();
+    }
+
+    centerAll();
+}
+void Robot::dance6()
+{
+    effects.ledOn();
+
+    readyPose();
+
+    for(byte i = 0; i < 3; i++)
+    {
+        celebrate();
+
+        nodHead();
+
+        celebrate();
+    }
+
+    centerAll();
+}
+void Robot::dance7()
+{
+    effects.ledOn();
+
+    readyPose();
+
+    for(byte i = 0; i < 6; i++)
+    {
+        openWings();
+
+        closeWings();
+    }
+
+    centerAll();
+}
+void Robot::dance8()
+{
+    effects.ledOn();
+
+    readyPose();
+
+    for(byte i = 0; i < 4; i++)
+    {
+        waveRightHand();
+
+        nodHead();
+
+        waveLeftHand();
+
+        nodHead();
+    }
+
+    centerAll();
+}
+void Robot::dance9()
+{
+    effects.ledOn();
+
+    readyPose();
+
+    for(byte i = 0; i < 6; i++)
+    {
+        flapWings();
+
+        nodHead();
+    }
+
+    centerAll();
+}
+void Robot::dance10()
+{
+    effects.ledOn();
+
+    readyPose();
+
+    for(byte i = 0; i < 5; i++)
+    {
+        waveBothHands();
+
+        flapWings();
+
+        shakeHead();
+
+        celebrate();
+    }
+
+    centerAll();
+
+    effects.ledOff();
+}
 void Robot::randomDance()
 {
     switch(random(DANCE_COUNT))
     {
-        case 0:
-
-            dance1();
-
-            break;
-
-        case 1:
-
-            dance2();
-
-            break;
+        case 0: dance1(); break;
+        case 1: dance2(); break;
+        case 2: dance3(); break;
+        case 3: dance4(); break;
+        case 4: dance5(); break;
+        case 5: dance6(); break;
+        case 6: dance7(); break;
+        case 7: dance8(); break;
+        case 8: dance9(); break;
+        case 9: dance10(); break;
 
         default:
-
-            dance3();
-
+            dance1();
             break;
     }
 }
