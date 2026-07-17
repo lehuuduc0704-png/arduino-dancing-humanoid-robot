@@ -1,21 +1,43 @@
 #ifndef SERVO_CONTROLLER_H
 #define SERVO_CONTROLLER_H
 
+#include <Arduino.h>
 #include <Servo.h>
 
 class ServoController
 {
 private:
+
     Servo servo;
+
+    int pin;
+
+    int currentAngle;
+
+    int minAngle;
+
+    int maxAngle;
+
+    int centerAngle;
 
 public:
 
-    void attach(int pin);
+    ServoController(
+        int pin,
+        int minAngle,
+        int maxAngle,
+        int centerAngle
+    );
 
-    void write(int angle);
+    void begin();
 
-    void moveSmooth(int from,int to,int speed);
+    void moveTo(int angle);
 
+    void moveSmooth(int angle, int speed = 10);
+
+    void center();
+
+    int getAngle();
 };
 
 #endif
