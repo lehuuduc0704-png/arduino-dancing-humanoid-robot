@@ -34,18 +34,59 @@ Robot::Robot()
 
 {
 
+    servos[0] = &head;
+    servos[1] = &leftArm;
+    servos[2] = &rightArm;
+    servos[3] = &leftWing;
+    servos[4] = &rightWing;
+
 }
 void Robot::begin()
 {
-    head.begin();
+    for (int i = 0; i < 5; i++)
+    {
+        servos[i]->begin();
+    }
 
-    leftArm.begin();
+    pinMode(CHEST_LED_PIN, OUTPUT);
 
-    rightArm.begin();
+    pinMode(BUZZER_PIN, OUTPUT);
 
-    leftWing.begin();
-
-    rightWing.begin();
+    pinMode(SOUND_PIN, INPUT);
 
     startup();
+}
+void Robot::startup()
+{
+    digitalWrite(CHEST_LED_PIN, HIGH);
+
+    tone(BUZZER_PIN, 1000, 150);
+
+    head.center();
+
+    leftArm.center();
+    rightArm.center();
+
+    leftWing.center();
+    rightWing.center();
+
+    delay(300);
+
+    leftWing.moveSmooth(LEFT_WING_OPEN);
+
+    rightWing.moveSmooth(RIGHT_WING_OPEN);
+
+    delay(300);
+
+    leftWing.moveSmooth(LEFT_WING_CLOSE);
+
+    rightWing.moveSmooth(RIGHT_WING_CLOSE);
+
+    delay(300);
+
+    head.moveSmooth(HEAD_LEFT);
+
+    head.moveSmooth(HEAD_RIGHT);
+
+    head.center();
 }
