@@ -1,77 +1,77 @@
 #include "ServoController.h"
 
+#include "Config.h"
+
 ServoController::ServoController(
-    int pin,
+    byte pin,
     int minAngle,
     int maxAngle,
     int centerAngle)
 {
     this->pin = pin;
+
     this->minAngle = minAngle;
+
     this->maxAngle = maxAngle;
+
     this->centerAngle = centerAngle;
 
-    currentAngle = centerAngle;
+    this->currentAngle = centerAngle;
+
+    this->attached = false;
 }
+
 void ServoController::begin()
 {
+    if (attached)
+    {
+        return;
+    }
+
     servo.attach(pin);
 
     servo.write(centerAngle);
 
     currentAngle = centerAngle;
-}
-void ServoController::moveTo(int angle)
-{
-    // Giới hạn góc
-    if (angle < minAngle)
-    {
-        angle = minAngle;
-    }
 
-    if (angle > maxAngle)
-    {
-        angle = maxAngle;
-    }
+    attached = true;
+
+    delay(300);
+}
+
+void ServoController::move(int angle)
+{
+    angle = constrain(angle, minAngle, maxAngle);
+
     servo.write(angle);
+
     currentAngle = angle;
 }
-void ServoController::moveSmooth(int angle, int speed)
+
+void ServoController::moveSmooth(int angle)
 {
-    if (angle < minAngle)
+    angle = constrain(angle, minAngle, maxAngle);
+
+    if (angle == currentAngle)
     {
-        angle = minAngle;
+        return;
     }
 
-    if (angle > maxAngle)
+    int step = (angle > currentAngle) ? 1 : -1;
+
+    for (int pos = currentAngle; pos != angle; pos += step)
     {
-        angle = maxAngle;
+        servo.write(pos);
+
+        delay(SERVO_DELAY);
     }
-    if (currentAngle < angle)
-    {
-        for (int i = currentAngle; i <= angle; i++)
-        {
-            servo.write(i);
-            delay(speed);
-        }
-    }
-    else
-    {
-        for (int i = currentAngle; i >= angle; i--)
-        {
-            servo.write(i);
-            delay(speed);
-        }
-    }
+
+    servo.write(angle);
 
     currentAngle = angle;
 }
+
 void ServoController::center()
 {
     moveSmooth(centerAngle);
-}
-
-int ServoController::getAngle()
-{
-    return currentAngle;
 }
