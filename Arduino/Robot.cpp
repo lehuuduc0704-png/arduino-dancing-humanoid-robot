@@ -119,6 +119,18 @@ void Robot::lookCenter()
 {
     head.center();
 }
+void Robot::nodHead()
+{
+    head.moveSmooth(HEAD_DOWN);
+
+    delay(200);
+
+    head.moveSmooth(HEAD_UP);
+
+    delay(200);
+
+    head.center();
+}
 
 //====================================================
 // Wing Motion
