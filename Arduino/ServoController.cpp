@@ -36,3 +36,42 @@ void ServoController::moveTo(int angle)
     servo.write(angle);
     currentAngle = angle;
 }
+void ServoController::moveSmooth(int angle, int speed)
+{
+    if (angle < minAngle)
+    {
+        angle = minAngle;
+    }
+
+    if (angle > maxAngle)
+    {
+        angle = maxAngle;
+    }
+    if (currentAngle < angle)
+    {
+        for (int i = currentAngle; i <= angle; i++)
+        {
+            servo.write(i);
+            delay(speed);
+        }
+    }
+    else
+    {
+        for (int i = currentAngle; i >= angle; i--)
+        {
+            servo.write(i);
+            delay(speed);
+        }
+    }
+
+    currentAngle = angle;
+}
+void ServoController::center()
+{
+    moveSmooth(centerAngle);
+}
+
+int ServoController::getAngle()
+{
+    return currentAngle;
+}
