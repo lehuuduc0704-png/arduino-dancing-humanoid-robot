@@ -11,39 +11,96 @@ class Robot
 {
 private:
 
-    //========================
+    //====================================================
     // Robot Parts
-    //========================
+    //====================================================
 
     ServoController head;
-
     ServoController leftArm;
-
     ServoController rightArm;
-
     ServoController leftWing;
-
     ServoController rightWing;
 
-    //========================
+    // Danh sách tất cả servo
+    ServoController* servos[5];
+
+    //====================================================
     // Devices
-    //========================
+    //====================================================
 
     Effects effects;
 
+    //====================================================
+    // Private Functions
+    //====================================================
+
+    void initDevices();
+
 public:
 
+    //====================================================
+    // Constructor
+    //====================================================
+
     Robot();
+
+    //====================================================
+    // Initialization
+    //====================================================
 
     void begin();
 
     void update();
 
+    //====================================================
+    // Startup
+    //====================================================
+
     void startup();
+
+    //====================================================
+    // Head Motion
+    //====================================================
+
+    void lookLeft();
+
+    void lookRight();
+
+    void lookCenter();
+
+    //====================================================
+    // Wing Motion
+    //====================================================
+
+    void openWings();
+
+    void closeWings();
+
+    //====================================================
+    // Arm Motion
+    //====================================================
+
+    void raiseArms();
+
+    void lowerArms();
+
+    //====================================================
+    // Robot Motion
+    //====================================================
+
+    void centerAll();
+
+    //====================================================
+    // Behaviors
+    //====================================================
 
     void greeting();
 
     void idle();
+
+    //====================================================
+    // Dance
+    //====================================================
 
     void dance1();
 
@@ -52,24 +109,6 @@ public:
     void dance3();
 
     void randomDance();
-
-    void openWings();
-
-    void closeWings();
-
-    void raiseArms();
-
-    void lowerArms();
-
-    void centerAll();
-private:
-    ServoController head;
-    ServoController leftArm;
-    ServoController rightArm;
-    ServoController leftWing;
-    ServoController rightWing;
-    ServoController* servos[5];
-    Effects effects;
 };
 
 #endif
