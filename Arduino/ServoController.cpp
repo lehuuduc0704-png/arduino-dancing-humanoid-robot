@@ -13,3 +13,26 @@ ServoController::ServoController(
 
     currentAngle = centerAngle;
 }
+void ServoController::begin()
+{
+    servo.attach(pin);
+
+    servo.write(centerAngle);
+
+    currentAngle = centerAngle;
+}
+void ServoController::moveTo(int angle)
+{
+    // Giới hạn góc
+    if (angle < minAngle)
+    {
+        angle = minAngle;
+    }
+
+    if (angle > maxAngle)
+    {
+        angle = maxAngle;
+    }
+    servo.write(angle);
+    currentAngle = angle;
+}
