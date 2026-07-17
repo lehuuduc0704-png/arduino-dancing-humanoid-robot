@@ -41,12 +41,28 @@ Robot::Robot()
     servos[2] = &rightArm;
     servos[3] = &leftWing;
     servos[4] = &rightWing;
+    lastSoundTime = 0;
 }
 
 //====================================================
 // Initialization
 //====================================================
+bool Robot::soundDetected()
+{
+    if (digitalRead(SOUND_PIN) != SOUND_TRIGGER)
+    {
+        return false;
+    }
 
+    if (millis() - lastSoundTime < 2000)
+    {
+        return false;
+    }
+
+    lastSoundTime = millis();
+
+    return true;
+}
 void Robot::initDevices()
 {
     pinMode(SOUND_PIN, INPUT);
@@ -530,10 +546,8 @@ void Robot::randomDance()
 
 void Robot::update()
 {
-    if(digitalRead(SOUND_PIN) == SOUND_TRIGGER)
+    if(soundDetected())
     {
         randomDance();
-
-        delay(500);
     }
 }
