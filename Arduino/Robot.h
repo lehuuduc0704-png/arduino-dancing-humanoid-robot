@@ -6,7 +6,11 @@
 #include "Config.h"
 #include "ServoController.h"
 #include "Effects.h"
+#define ACTION_DELAY 200
 
+#define SERVO_DELAY 15
+
+#define SOUND_TRIGGER HIGH
 class Robot
 {
 private:
