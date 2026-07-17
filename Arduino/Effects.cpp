@@ -1,36 +1,22 @@
 #include "Effects.h"
-#include "Config.h"
+
+Effects::Effects()
+{
+}
+
+void Effects::begin()
+{
+    pinMode(CHEST_LED_PIN, OUTPUT);
+
+    digitalWrite(CHEST_LED_PIN, LOW);
+}
 
 void Effects::ledOn()
 {
-    digitalWrite(CHEST_LED,HIGH);
+    digitalWrite(CHEST_LED_PIN, HIGH);
 }
 
 void Effects::ledOff()
 {
-    digitalWrite(CHEST_LED,LOW);
-}
-
-void Effects::blink(int times)
-{
-    for(int i=0;i<times;i++)
-    {
-        ledOn();
-        delay(150);
-
-        ledOff();
-        delay(150);
-    }
-}
-
-void Effects::beep(int times)
-{
-    for(int i=0;i<times;i++)
-    {
-        tone(BUZZER,1000);
-        delay(100);
-
-        noTone(BUZZER);
-        delay(100);
-    }
+    digitalWrite(CHEST_LED_PIN, LOW);
 }
