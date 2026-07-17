@@ -35,3 +35,17 @@ Robot::Robot()
 {
 
 }
+void Robot::begin()
+{
+    head.begin();
+
+    leftArm.begin();
+
+    rightArm.begin();
+
+    leftWing.begin();
+
+    rightWing.begin();
+
+    startup();
+}
