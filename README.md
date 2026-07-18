@@ -5,6 +5,15 @@ The robot reacts to sound and performs random dance animations using five servo 
 
 ---
 
+
+<p align="center">
+  <img src="Docs/robot.jpg" width="450">
+</p>
+
+<p align="center">
+DIY Arduino humanoid robot that reacts to sound and performs multiple dance animations using five servo motors.
+</p>
+
 ## 📌 Features
 
 - Object-Oriented Programming (OOP)
